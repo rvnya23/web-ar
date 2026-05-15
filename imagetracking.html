@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Library A-Frame untuk scene 3D -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+
+    <!-- Library AR.js khusus untuk NFT image tracking -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+</head>
+
+<body>
+    <!-- Pesan loading saat descriptor sedang dimuat -->
+    <div>Loading descriptor, please wait ....</div>
+
+    <!-- Scene AR utama -->
+    <a-scene
+        vr-mode-ui="enabled:false;"
+        renderer="logarithmicDepthBuffer: true; precision:medium;"
+        embedded
+        arjs="trackingMethod:best; sourceType: webcam; debugUIEnabled: false">
+
+        <!-- Target NFT: gambar marker yang akan dikenali -->
+        <a-nft
+            type="nft"
+            url="./assets/nft/asiamalang"
+            smooth="true"
+            smoothCount="10"
+            smoothTolerance="0.01"
+            smoothThreshold="5">
+
+            <!-- Model 3D yang muncul di atas marker -->
+            <a-entity
+                gltf-model="./assets/model/mobil.glb"
+                scale="30 30 30"
+                position="0 10 20"
+                rotation="0 90 270">
+            </a-entity>
+
+        </a-nft>
+
+        <!-- Kamera AR -->
+        <a-entity camera></a-entity>
+
+    </a-scene>
+</body>
+</html>
